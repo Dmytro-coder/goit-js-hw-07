@@ -22,6 +22,7 @@ function createGalleryItemsMarkup(items) {
   }).join('');
 }
 
+// Create modal
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionPosition: 'bottom',
