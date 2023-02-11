@@ -3,35 +3,31 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryContainerItem = document.querySelector(".gallery");
-const itemsMarkup = createItemsMarkup(galleryItems);
-galleryContainerItem.insertAdjacentHTML("beforeend",  itemsMarkup);
+const galleryContainer = document.querySelector('.gallery');
+const itemsMarkup = createGalleryItemsMarkup(galleryItems);
+galleryContainer.insertAdjacentHTML('beforeend', itemsMarkup);
 
 // Rendered items
-function createItemsMarkup(item) {
-    return galleryItems
-        .map(({ preview, original, description }) => {
-            return `<ul class="gallery">
-                <li>
-                    <a class="gallery__item" href="${original}">
-                        <img
-                            class="gallery__image"
-                            src="${preview}"          
-                            alt="${description}"
-                        />
-                    </a>
-                </li>
-            </ul>`;
-        })
-        .join("");
+function createGalleryItemsMarkup(items) {
+  return items.map(({ preview, original, description }) => {
+    return `<li>
+  <a class="gallery__item" href="${original}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      alt="${description}"
+    />
+  </a>
+</li>`
+  }).join('');
 }
 
-const lightbox = new SimpleLightbox(".gallery a", {
-    captionsData: "alt",
-    captionType: "alt",
-    fadeSpeed: 300,
-    captionPosition: 'bottom',
-    captionDelay: 250,
-    showCounter: false,
-    loop: false,
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+  captionType: "alt",
+  fadeSpeed: 250,
+  loop: false,
+//   showCounter: false
 });
